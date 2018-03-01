@@ -1,0 +1,2078 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/23/2018 8:08:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PCZ0615"
+  DTS:CreatorName="PGE\E08384"
+  DTS:DTSID="{8CB51C2D-DB94-4BF6-B638-31D0D6E63CA7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Endur PnL - Prod to Dev"
+  DTS:PackageType="5"
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{D602C320-B38A-4404-A23D-E08A50936004}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Endur-Prod_to_Dev.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{06B54859-1517-4A52-A24B-9970DFF4DCEC}"
+      DTS:ObjectName="Endur-Prod_to_Dev.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="E:\SSIS\Endur-Prod_to_Dev.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[jwtcvDMedb05.EndurApps]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F390BA26-1B68-428D-8649-15EE59ADE2DE}"
+      DTS:ObjectName="jwtcvDMedb05.EndurApps">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=jwtcvDMedb05;Initial Catalog=EndurApps;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[jwtcvDMedb05.Endur_Dev]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5BE12BF3-08E9-4284-A460-2E155C678D0C}"
+      DTS:ObjectName="jwtcvDMedb05.Endur_Dev">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=jwtcvDMedb05;Initial Catalog=Endur_Dev;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[jwtcvPMedb05.Endur]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{26A78577-AB15-49A3-AD8B-F727444B85E9}"
+      DTS:ObjectName="jwtcvPMedb05.Endur">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=jwtcvPMedb05;Initial Catalog=Endur;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PCZ0615.Endur]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0FA5EDB1-D67E-4B17-B568-0B635F23A47B}"
+      DTS:ObjectName="PCZ0615.Endur">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PCZ0615;Initial Catalog=Endur;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="jwtcvDMedb05.EndurApps"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{92F9D4F5-3A98-4263-811E-52C34BF87024}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+    <DTS:LogProvider
+      DTS:ConfigString="Endur-Prod_to_Dev.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{FCB33309-AB10-4B15-A8ED-C57F2AED261C}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0C53AC9E-FDE2-4511-9D99-577F5757EAB8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractionIDs">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">3,7,OnError,13,OnPostExecute,12,OnTaskFailed</DTS:Property>
+    <DTS:Property
+      DTS:EventName="Diagnostic"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnProgress"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{92F9D4F5-3A98-4263-811E-52C34BF87024}" />
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{FCB33309-AB10-4B15-A8ED-C57F2AED261C}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dw_pnl_detail_results"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{FD1C4A31-F78A-49DA-888E-1C7BDD677186}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dw_pnl_detail_results"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">7,7,OnError,13,OnInformation,13,OnPostExecute,12,OnPreExecute,10,OnProgress,12,OnTaskFailed,9,OnWarning</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{92F9D4F5-3A98-4263-811E-52C34BF87024}" />
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{FCB33309-AB10-4B15-A8ED-C57F2AED261C}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferMaxRows="100000"
+          defaultBufferSize="104857600"
+          version="1">
+          <components>
+            <component
+              refId="Package\dw_pnl_detail_results\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dw_pnl_detail_results]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,ROWS_PER_BATCH = 100000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dw_pnl_detail_results\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[jwtcvDMedb05.Endur_Dev]"
+                  connectionManagerRefId="Package.ConnectionManagers[jwtcvDMedb05.Endur_Dev]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[extraction_id]"
+                      cachedDataType="i4"
+                      cachedName="extraction_id"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[extraction_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[extraction_id]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[result_type]"
+                      cachedDataType="i4"
+                      cachedName="result_type"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[result_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[result_type]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[deal_num]"
+                      cachedDataType="i4"
+                      cachedName="deal_num"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_num]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_num]"
+                      cachedDataType="i4"
+                      cachedName="tran_num"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_num]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[deal_leg]"
+                      cachedDataType="i4"
+                      cachedName="deal_leg"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_leg]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[deal_leg_1]"
+                      cachedDataType="i4"
+                      cachedName="deal_leg_1"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_leg_1]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg_1]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[deal_pdc]"
+                      cachedDataType="i4"
+                      cachedName="deal_pdc"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_pdc]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_pdc]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ins_seq_num]"
+                      cachedDataType="i4"
+                      cachedName="ins_seq_num"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ins_seq_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_seq_num]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price_band]"
+                      cachedDataType="i4"
+                      cachedName="price_band"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price_band]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price_band_seq_num]"
+                      cachedDataType="i4"
+                      cachedName="price_band_seq_num"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price_band_seq_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band_seq_num]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[comm_opt_exercised_flag]"
+                      cachedDataType="i4"
+                      cachedName="comm_opt_exercised_flag"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[comm_opt_exercised_flag]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[comm_opt_exercised_flag]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cflow_type]"
+                      cachedDataType="i4"
+                      cachedName="cflow_type"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cflow_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[cflow_type]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[broker_fee_type]"
+                      cachedDataType="i4"
+                      cachedName="broker_fee_type"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[broker_fee_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[broker_fee_type]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[start_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_date"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[end_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_date"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rate_dtmn_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rate_dtmn_date"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rate_dtmn_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_dtmn_date]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pymt_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="pymt_date"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pymt_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt_date]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[currency_id]"
+                      cachedDataType="i4"
+                      cachedName="currency_id"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[currency_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[currency_id]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[settlement_type]"
+                      cachedDataType="i4"
+                      cachedName="settlement_type"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[settlement_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[settlement_type]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[volume]"
+                      cachedDataType="r8"
+                      cachedName="volume"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[volume]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[volume]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="r8"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[strike]"
+                      cachedDataType="r8"
+                      cachedName="strike"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strike]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[strike]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pymt]"
+                      cachedDataType="r8"
+                      cachedName="pymt"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pymt]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total_value]"
+                      cachedDataType="r8"
+                      cachedName="total_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[realized_value]"
+                      cachedDataType="r8"
+                      cachedName="realized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[realized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[unrealized_value]"
+                      cachedDataType="r8"
+                      cachedName="unrealized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[unrealized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_total_value]"
+                      cachedDataType="r8"
+                      cachedName="base_total_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_total_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_realized_value]"
+                      cachedDataType="r8"
+                      cachedName="base_realized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_realized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_unrealized_value]"
+                      cachedDataType="r8"
+                      cachedName="base_unrealized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_unrealized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[df]"
+                      cachedDataType="r8"
+                      cachedName="df"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[df]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[df]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_status]"
+                      cachedDataType="i4"
+                      cachedName="tran_status"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_status]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rate_status]"
+                      cachedDataType="i4"
+                      cachedName="rate_status"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rate_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_status]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_pymt]"
+                      cachedDataType="r8"
+                      cachedName="yest_pymt"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_pymt]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_pymt]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_total_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_total_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_total_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_realized_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_realized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_realized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_unrealized_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_unrealized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_unrealized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_base_total_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_base_total_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_total_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_base_realized_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_base_realized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_realized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_base_unrealized_value]"
+                      cachedDataType="r8"
+                      cachedName="yest_base_unrealized_value"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_unrealized_value]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[change_in_tot_pnl]"
+                      cachedDataType="r8"
+                      cachedName="change_in_tot_pnl"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[change_in_tot_pnl]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_in_tot_pnl]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[yest_tran_status]"
+                      cachedDataType="i4"
+                      cachedName="yest_tran_status"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_tran_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_tran_status]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[new_deal]"
+                      cachedDataType="i4"
+                      cachedName="new_deal"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[new_deal]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[new_deal]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ins_source_id]"
+                      cachedDataType="i4"
+                      cachedName="ins_source_id"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ins_source_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_source_id]" />
+                    <inputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_source_id]"
+                      cachedDataType="i4"
+                      cachedName="event_source_id"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_source_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[event_source_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[extraction_id]"
+                      dataType="i4"
+                      name="extraction_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[result_type]"
+                      dataType="i4"
+                      name="result_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_num]"
+                      dataType="i4"
+                      name="deal_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_num]"
+                      dataType="i4"
+                      name="tran_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_leg]"
+                      dataType="i4"
+                      name="deal_leg" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_leg_1]"
+                      dataType="i4"
+                      name="deal_leg_1" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deal_pdc]"
+                      dataType="i4"
+                      name="deal_pdc" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ins_seq_num]"
+                      dataType="i4"
+                      name="ins_seq_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price_band]"
+                      dataType="i4"
+                      name="price_band" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price_band_seq_num]"
+                      dataType="i4"
+                      name="price_band_seq_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[comm_opt_exercised_flag]"
+                      dataType="i4"
+                      name="comm_opt_exercised_flag" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cflow_type]"
+                      dataType="i4"
+                      name="cflow_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[broker_fee_type]"
+                      dataType="i4"
+                      name="broker_fee_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rate_dtmn_date]"
+                      dataType="dbTimeStamp"
+                      name="rate_dtmn_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pymt_date]"
+                      dataType="dbTimeStamp"
+                      name="pymt_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[currency_id]"
+                      dataType="i4"
+                      name="currency_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[settlement_type]"
+                      dataType="i4"
+                      name="settlement_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[volume]"
+                      dataType="r8"
+                      name="volume" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      dataType="r8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[strike]"
+                      dataType="r8"
+                      name="strike" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pymt]"
+                      dataType="r8"
+                      name="pymt" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_value]"
+                      dataType="r8"
+                      name="total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[realized_value]"
+                      dataType="r8"
+                      name="realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unrealized_value]"
+                      dataType="r8"
+                      name="unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_total_value]"
+                      dataType="r8"
+                      name="base_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_realized_value]"
+                      dataType="r8"
+                      name="base_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_unrealized_value]"
+                      dataType="r8"
+                      name="base_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[df]"
+                      dataType="r8"
+                      name="df" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_status]"
+                      dataType="i4"
+                      name="tran_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rate_status]"
+                      dataType="i4"
+                      name="rate_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_pymt]"
+                      dataType="r8"
+                      name="yest_pymt" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_total_value]"
+                      dataType="r8"
+                      name="yest_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_realized_value]"
+                      dataType="r8"
+                      name="yest_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_unrealized_value]"
+                      dataType="r8"
+                      name="yest_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_total_value]"
+                      dataType="r8"
+                      name="yest_base_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_realized_value]"
+                      dataType="r8"
+                      name="yest_base_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_base_unrealized_value]"
+                      dataType="r8"
+                      name="yest_base_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[change_in_tot_pnl]"
+                      dataType="r8"
+                      name="change_in_tot_pnl" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[yest_tran_status]"
+                      dataType="i4"
+                      name="yest_tran_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[new_deal]"
+                      dataType="i4"
+                      name="new_deal" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ins_source_id]"
+                      dataType="i4"
+                      name="ins_source_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_source_id]"
+                      dataType="i4"
+                      name="event_source_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dw_pnl_detail_results\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dw_pnl_detail_results\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dw_pnl_detail_results]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT d.*
+FROM dbo.dw_pnl_detail_results d
+INNER JOIN dbo.dw_extraction_log l ON l.extraction_id = d.extraction_id
+WHERE l.system_date &gt;= '1/11/2017'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dw_pnl_detail_results\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[jwtcvPMedb05.Endur]"
+                  connectionManagerRefId="Package.ConnectionManagers[jwtcvPMedb05.Endur]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[extraction_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[extraction_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[extraction_id]"
+                      name="extraction_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[result_type]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[result_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[result_type]"
+                      name="result_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_num]"
+                      name="deal_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_num]"
+                      name="tran_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_leg]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg]"
+                      name="deal_leg"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg_1]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_leg_1]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_leg_1]"
+                      name="deal_leg_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_pdc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_pdc]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[deal_pdc]"
+                      name="deal_pdc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_seq_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ins_seq_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_seq_num]"
+                      name="ins_seq_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price_band]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band]"
+                      name="price_band"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band_seq_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price_band_seq_num]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price_band_seq_num]"
+                      name="price_band_seq_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[comm_opt_exercised_flag]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[comm_opt_exercised_flag]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[comm_opt_exercised_flag]"
+                      name="comm_opt_exercised_flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[cflow_type]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cflow_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[cflow_type]"
+                      name="cflow_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[broker_fee_type]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[broker_fee_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[broker_fee_type]"
+                      name="broker_fee_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[start_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]"
+                      name="start_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[end_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]"
+                      name="end_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_dtmn_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rate_dtmn_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_dtmn_date]"
+                      name="rate_dtmn_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pymt_date]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt_date]"
+                      name="pymt_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[currency_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[currency_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[currency_id]"
+                      name="currency_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[settlement_type]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[settlement_type]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[settlement_type]"
+                      name="settlement_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[volume]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[volume]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[volume]"
+                      name="volume"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[price]"
+                      name="price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[strike]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[strike]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[strike]"
+                      name="strike"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pymt]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[pymt]"
+                      name="pymt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_value]"
+                      name="total_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[realized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[realized_value]"
+                      name="realized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[unrealized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[unrealized_value]"
+                      name="unrealized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_total_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_total_value]"
+                      name="base_total_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_realized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_realized_value]"
+                      name="base_realized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_unrealized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_unrealized_value]"
+                      name="base_unrealized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[df]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[df]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[df]"
+                      name="df"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_status]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_status]"
+                      name="tran_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_status]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rate_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[rate_status]"
+                      name="rate_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_pymt]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_pymt]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_pymt]"
+                      name="yest_pymt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_total_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_total_value]"
+                      name="yest_total_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_realized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_realized_value]"
+                      name="yest_realized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_unrealized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_unrealized_value]"
+                      name="yest_unrealized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_total_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_total_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_total_value]"
+                      name="yest_base_total_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_realized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_realized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_realized_value]"
+                      name="yest_base_realized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_unrealized_value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_unrealized_value]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_base_unrealized_value]"
+                      name="yest_base_unrealized_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_in_tot_pnl]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[change_in_tot_pnl]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[change_in_tot_pnl]"
+                      name="change_in_tot_pnl"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_tran_status]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_tran_status]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[yest_tran_status]"
+                      name="yest_tran_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[new_deal]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[new_deal]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[new_deal]"
+                      name="new_deal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ins_source_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[ins_source_id]"
+                      name="ins_source_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[event_source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[event_source_id]"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].Columns[event_source_id]"
+                      name="event_source_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[extraction_id]"
+                      dataType="i4"
+                      name="extraction_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[result_type]"
+                      dataType="i4"
+                      name="result_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_num]"
+                      dataType="i4"
+                      name="deal_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_num]"
+                      dataType="i4"
+                      name="tran_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_leg]"
+                      dataType="i4"
+                      name="deal_leg" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_leg_1]"
+                      dataType="i4"
+                      name="deal_leg_1" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[deal_pdc]"
+                      dataType="i4"
+                      name="deal_pdc" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ins_seq_num]"
+                      dataType="i4"
+                      name="ins_seq_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price_band]"
+                      dataType="i4"
+                      name="price_band" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price_band_seq_num]"
+                      dataType="i4"
+                      name="price_band_seq_num" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[comm_opt_exercised_flag]"
+                      dataType="i4"
+                      name="comm_opt_exercised_flag" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cflow_type]"
+                      dataType="i4"
+                      name="cflow_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[broker_fee_type]"
+                      dataType="i4"
+                      name="broker_fee_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rate_dtmn_date]"
+                      dataType="dbTimeStamp"
+                      name="rate_dtmn_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pymt_date]"
+                      dataType="dbTimeStamp"
+                      name="pymt_date" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[currency_id]"
+                      dataType="i4"
+                      name="currency_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[settlement_type]"
+                      dataType="i4"
+                      name="settlement_type" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[volume]"
+                      dataType="r8"
+                      name="volume" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="r8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[strike]"
+                      dataType="r8"
+                      name="strike" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pymt]"
+                      dataType="r8"
+                      name="pymt" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_value]"
+                      dataType="r8"
+                      name="total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[realized_value]"
+                      dataType="r8"
+                      name="realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unrealized_value]"
+                      dataType="r8"
+                      name="unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_total_value]"
+                      dataType="r8"
+                      name="base_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_realized_value]"
+                      dataType="r8"
+                      name="base_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_unrealized_value]"
+                      dataType="r8"
+                      name="base_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[df]"
+                      dataType="r8"
+                      name="df" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_status]"
+                      dataType="i4"
+                      name="tran_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rate_status]"
+                      dataType="i4"
+                      name="rate_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_pymt]"
+                      dataType="r8"
+                      name="yest_pymt" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_total_value]"
+                      dataType="r8"
+                      name="yest_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_realized_value]"
+                      dataType="r8"
+                      name="yest_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_unrealized_value]"
+                      dataType="r8"
+                      name="yest_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_total_value]"
+                      dataType="r8"
+                      name="yest_base_total_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_realized_value]"
+                      dataType="r8"
+                      name="yest_base_realized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_base_unrealized_value]"
+                      dataType="r8"
+                      name="yest_base_unrealized_value" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[change_in_tot_pnl]"
+                      dataType="r8"
+                      name="change_in_tot_pnl" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[yest_tran_status]"
+                      dataType="i4"
+                      name="yest_tran_status" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[new_deal]"
+                      dataType="i4"
+                      name="new_deal" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ins_source_id]"
+                      dataType="i4"
+                      name="ins_source_id" />
+                    <externalMetadataColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[event_source_id]"
+                      dataType="i4"
+                      name="event_source_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[extraction_id]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[extraction_id]"
+                      name="extraction_id" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[result_type]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[result_type]"
+                      name="result_type" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_num]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_num]"
+                      name="deal_num" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_num]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_num]"
+                      name="tran_num" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_leg]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_leg]"
+                      name="deal_leg" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_leg_1]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_leg_1]"
+                      name="deal_leg_1" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_pdc]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[deal_pdc]"
+                      name="deal_pdc" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ins_seq_num]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ins_seq_num]"
+                      name="ins_seq_num" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price_band]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price_band]"
+                      name="price_band" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price_band_seq_num]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price_band_seq_num]"
+                      name="price_band_seq_num" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[comm_opt_exercised_flag]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[comm_opt_exercised_flag]"
+                      name="comm_opt_exercised_flag" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cflow_type]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cflow_type]"
+                      name="cflow_type" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[broker_fee_type]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[broker_fee_type]"
+                      name="broker_fee_type" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[start_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[start_date]"
+                      name="start_date" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[end_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[end_date]"
+                      name="end_date" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rate_dtmn_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rate_dtmn_date]"
+                      name="rate_dtmn_date" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pymt_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pymt_date]"
+                      name="pymt_date" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[currency_id]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[currency_id]"
+                      name="currency_id" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[settlement_type]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[settlement_type]"
+                      name="settlement_type" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[volume]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[volume]"
+                      name="volume" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[strike]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[strike]"
+                      name="strike" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pymt]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pymt]"
+                      name="pymt" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_value]"
+                      name="total_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[realized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[realized_value]"
+                      name="realized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unrealized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unrealized_value]"
+                      name="unrealized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_total_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_total_value]"
+                      name="base_total_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_realized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_realized_value]"
+                      name="base_realized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_unrealized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_unrealized_value]"
+                      name="base_unrealized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[df]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[df]"
+                      name="df" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_status]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_status]"
+                      name="tran_status" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rate_status]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rate_status]"
+                      name="rate_status" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_pymt]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_pymt]"
+                      name="yest_pymt" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_total_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_total_value]"
+                      name="yest_total_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_realized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_realized_value]"
+                      name="yest_realized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_unrealized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_unrealized_value]"
+                      name="yest_unrealized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_total_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_total_value]"
+                      name="yest_base_total_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_realized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_realized_value]"
+                      name="yest_base_realized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_unrealized_value]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_base_unrealized_value]"
+                      name="yest_base_unrealized_value" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[change_in_tot_pnl]"
+                      dataType="r8"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[change_in_tot_pnl]"
+                      name="change_in_tot_pnl" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_tran_status]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[yest_tran_status]"
+                      name="yest_tran_status" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[new_deal]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[new_deal]"
+                      name="new_deal" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ins_source_id]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ins_source_id]"
+                      name="ins_source_id" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[event_source_id]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[event_source_id]"
+                      name="event_source_id" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dw_pnl_detail_results.Paths[OLE DB Source Output]"
+              endId="Package\dw_pnl_detail_results\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\dw_pnl_detail_results\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dw_pnl_detail_results - Drop &amp; Create"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{DCDB8D32-22B8-4AC0-A4C1-990698B0F7DF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dw_pnl_detail_results - Drop &amp; Create"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5BE12BF3-08E9-4284-A460-2E155C678D0C}"
+          SQLTask:SqlStatementSource="SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;DECLARE @BackupName varchar(50) = 'dw_pnl_detail_results_' + Format(GetDate(), 'yyyyMMdd')&#xA;&#xA;IF&#x9;OBJECT_ID('dbo.dw_pnl_detail_results') IS NOT NULL &#xA;AND&#x9;EXISTS (SELECT 1 FROM dbo.dw_pnl_detail_results)&#xA;BEGIN&#xA;&#x9;IF OBJECT_ID(@BackupName) IS NOT NULL &#xA;&#x9;BEGIN&#xA;&#x9;&#x9;PRINT 'Dropping previuos backup table ' + @BackupName&#xA;&#x9;&#x9;EXECUTE ('DROP TABLE ' + @BackupName)&#xA;&#x9;END&#xA;&#x9;EXEC sp_rename 'dbo.dw_pnl_detail_results', @BackupName;&#xA;&#x9;PRINT 'Renamed dbo.dw_pnl_detail_results to ' + @BackupName&#xA;END&#xA;ELSE&#xA;&#x9;PRINT 'No dw_pnl_detail_results data to backup.'&#xA;GO&#xA;&#xA;IF OBJECT_ID('dbo.dw_pnl_detail_results') IS NOT NULL DROP TABLE dbo.dw_pnl_detail_results;&#x9;-- Because it's happened. Don't ask me why...&#xA;&#xA;&#xA;CREATE TABLE [dbo].[dw_pnl_detail_results](&#xA;&#x9;[extraction_id] [int] NULL,&#xA;&#x9;[result_type] [int] NULL,&#xA;&#x9;[deal_num] [int] NULL,&#xA;&#x9;[tran_num] [int] NULL,&#xA;&#x9;[deal_leg] [int] NULL,&#xA;&#x9;[deal_leg_1] [int] NULL,&#xA;&#x9;[deal_pdc] [int] NULL,&#xA;&#x9;[ins_seq_num] [int] NULL,&#xA;&#x9;[price_band] [int] NULL,&#xA;&#x9;[price_band_seq_num] [int] NULL,&#xA;&#x9;[comm_opt_exercised_flag] [int] NULL,&#xA;&#x9;[cflow_type] [int] NULL,&#xA;&#x9;[broker_fee_type] [int] NULL,&#xA;&#x9;[start_date] [datetime] NULL,&#xA;&#x9;[end_date] [datetime] NULL,&#xA;&#x9;[rate_dtmn_date] [datetime] NULL,&#xA;&#x9;[pymt_date] [datetime] NULL,&#xA;&#x9;[currency_id] [int] NULL,&#xA;&#x9;[settlement_type] [int] NULL,&#xA;&#x9;[volume] [float] NULL,&#xA;&#x9;[price] [float] NULL,&#xA;&#x9;[strike] [float] NULL,&#xA;&#x9;[pymt] [float] NULL,&#xA;&#x9;[total_value] [float] NULL,&#xA;&#x9;[realized_value] [float] NULL,&#xA;&#x9;[unrealized_value] [float] NULL,&#xA;&#x9;[base_total_value] [float] NULL,&#xA;&#x9;[base_realized_value] [float] NULL,&#xA;&#x9;[base_unrealized_value] [float] NULL,&#xA;&#x9;[df] [float] NULL,&#xA;&#x9;[tran_status] [int] NULL,&#xA;&#x9;[rate_status] [int] NULL,&#xA;&#x9;[yest_pymt] [float] NULL,&#xA;&#x9;[yest_total_value] [float] NULL,&#xA;&#x9;[yest_realized_value] [float] NULL,&#xA;&#x9;[yest_unrealized_value] [float] NULL,&#xA;&#x9;[yest_base_total_value] [float] NULL,&#xA;&#x9;[yest_base_realized_value] [float] NULL,&#xA;&#x9;[yest_base_unrealized_value] [float] NULL,&#xA;&#x9;[change_in_tot_pnl] [float] NULL,&#xA;&#x9;[yest_tran_status] [int] NULL,&#xA;&#x9;[new_deal] [int] NULL,&#xA;&#x9;[ins_source_id] [int] NULL,&#xA;&#x9;[event_source_id] [int] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;/****** Object:  Index [dw_pnl_detail_results_idx]    Script Date: 2/28/2018 9:26:35 AM ******/&#xA;CREATE NONCLUSTERED INDEX [dw_pnl_detail_results_idx] ON [dbo].[dw_pnl_detail_results]&#xA;(&#xA;&#x9;[extraction_id] ASC,&#xA;&#x9;[result_type] ASC,&#xA;&#x9;[deal_num] ASC,&#xA;&#x9;[tran_num] ASC,&#xA;&#x9;[deal_leg] ASC,&#xA;&#x9;[deal_leg_1] ASC,&#xA;&#x9;[deal_pdc] ASC,&#xA;&#x9;[ins_source_id] ASC,&#xA;&#x9;[price_band_seq_num] ASC,&#xA;&#x9;[cflow_type] ASC,&#xA;&#x9;[broker_fee_type] ASC,&#xA;&#x9;[settlement_type] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DE1E3D7B-E940-45C5-8595-29765395DE90}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{26A78577-AB15-49A3-AD8B-F727444B85E9}"
+          SQLTask:SqlStatementSource="SELECT TOP 5 * FROM dbo.dw_pnl_detail_results"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="NewResultName"
+            SQLTask:DtsVariableName="User::ExtractionIDs" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{E3E89F7B-EFB3-4F48-B445-0FADF86EF2AE}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:Variables />
+      <DTS:Executables />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{076FDB49-84E3-41B5-994E-6671949885A8}"
+      DTS:From="Package\dw_pnl_detail_results - Drop &amp; Create"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\dw_pnl_detail_results" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0E11ED6F-2B9E-401F-B95C-707EAC3E64DA}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\dw_pnl_detail_results"
+          TopLeft="380.8,289" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\dw_pnl_detail_results - Drop &amp; Create"
+          TopLeft="341.8,216.6" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="471.3,258.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.4"
+              Start="0,0"
+              End="0,22.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="214,55"
+          Size="214,98"
+          Id="Package\Foreach Loop Container"
+          TopLeft="771,491" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="790,403" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="874.75,445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dw_pnl_detail_results">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\dw_pnl_detail_results\OLE DB Source"
+          TopLeft="243,117" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\dw_pnl_detail_results\OLE DB Destination"
+          TopLeft="233,232" />
+        <EdgeLayout
+          Id="Package\dw_pnl_detail_results.Paths[OLE DB Source Output]"
+          TopLeft="318.25,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dw_pnl_detail_results\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dw_pnl_detail_results\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

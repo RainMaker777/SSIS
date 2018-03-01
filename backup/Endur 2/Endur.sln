@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Endur", "Endur.dtproj", "{8C83761D-2247-4FD2-8B9E-5422F6926F41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C83761D-2247-4FD2-8B9E-5422F6926F41}.Development|Default.ActiveCfg = Development
+		{8C83761D-2247-4FD2-8B9E-5422F6926F41}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89F4DA91-EBB0-4DF1-89D7-12AD49BA54C9}
+	EndGlobalSection
+EndGlobal
