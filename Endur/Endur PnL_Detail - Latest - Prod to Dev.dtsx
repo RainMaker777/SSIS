@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Endur PnL_Detail - Latest - Prod to Dev"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{41F96D3E-B47B-4F22-9B4E-F3B5C1E45958}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{130EBDAC-3B7C-4DAD-8A67-699C7A3862C6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
       DTS:ObjectName="Error Rows">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Code\zzRainMaker\SSIS\Endur\Errors.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Code\zzRainMaker\SSIS\Endur\Errors.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1015,7 +1015,9 @@ SET @LatestId = CASE WHEN ISNULL(@LatestIdInput,0) &lt; 1 THEN 99999999 ELSE @La
 
 SELECT *
 FROM dbo.dw_pnl_detail_results
-WHERE extraction_id &gt; @LatestId</property>
+WHERE extraction_id &gt; @LatestId
+/* WHERE extraction_id BETWEEN 46819 AND 48227 */
+/* WHERE extraction_id BETWEEN 48228 AND 50516 */</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3547,6 +3549,10 @@ WHERE extraction_id &gt; ?</property>
           Id="Package\dw_pnl_detail_results - Drop &amp; Create"
           TopLeft="537.8,111.6" />
         <NodeLayout
+          Size="218,42"
+          Id="Package\dw_pnl_detail_results backup"
+          TopLeft="569.8,221" />
+        <NodeLayout
           Size="192,42"
           Id="Package\Get Latest ID From DEV"
           TopLeft="209,109" />
@@ -3572,10 +3578,6 @@ WHERE extraction_id &gt; ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="218,42"
-          Id="Package\dw_pnl_detail_results backup"
-          TopLeft="569.8,221" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3618,6 +3620,19 @@ WHERE extraction_id &gt; ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\dw_pnl_detail_results\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\dw_pnl_detail_results\OLE DB Source">
     <Properties>
       <Property>
@@ -3634,15 +3649,15 @@ WHERE extraction_id &gt; ?</property>
     design-time-name="Package\dw_pnl_detail_results backup">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="171,42"
-          Id="Package\dw_pnl_detail_results backup\OLE DB Destination"
-          TopLeft="233,232" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\dw_pnl_detail_results backup\OLE DB Source"
           TopLeft="243,117" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\dw_pnl_detail_results backup\OLE DB Destination"
+          TopLeft="233,232" />
         <EdgeLayout
           Id="Package\dw_pnl_detail_results backup.Paths[OLE DB Source Output]"
           TopLeft="318.25,159">
@@ -3662,24 +3677,13 @@ WHERE extraction_id &gt; ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\dw_pnl_detail_results\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
