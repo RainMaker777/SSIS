@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Endur PnL_Detail - Latest - Prod to Dev"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{2BF70B31-EB67-4EAB-A6F6-A6DB3B5BBEC8}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{97190BC3-6410-4E86-AA98-0AD558209E2F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1015,10 +1015,7 @@ SET @LatestId = CASE WHEN ISNULL(@LatestIdInput,0) &lt; 1 THEN 99999999 ELSE @La
 
 SELECT *
 FROM dbo.dw_pnl_detail_results
-/* WHERE extraction_id &gt; @LatestId */
-WHERE extraction_id &lt; 46819
-/* WHERE extraction_id BETWEEN 46819 AND 48227 */
-/* WHERE extraction_id BETWEEN 48228 AND 50516 */</property>
+WHERE extraction_id &gt; @LatestId</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
